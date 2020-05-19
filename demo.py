@@ -15,7 +15,7 @@ if __name__ == '__main__':
             '%(levelname)12s module: %(filename)-12s ' +
             'line: %(lineno)4d message: %(message)s'))
     # Instantiate session to IxNetwork
-    session = IxNetworkRESTAPI('10.27.200.3', '11009', 'admin', 'admin')
+    session = IxNetworkRESTAPI('192.168.1.1', '443', 'username', 'password')
     # Get representation of session
     # (just for demonstration and logging purposes)
     logging.warning(f'Create instance of {repr(session)}')
@@ -25,9 +25,9 @@ if __name__ == '__main__':
             'card': '1',
             'port': '1',
             'link_id': 'left_side'},
-        'port1/3': {
+        'port1/2': {
             'card': '1',
-            'port': '3',
+            'port': '2',
             'link_id': 'right_side'}}
     # Select chassis and assign ports and save vports (below in analogy)
     session.assign_ports('10.27.193.3', ports, session.storage)
@@ -40,10 +40,10 @@ if __name__ == '__main__':
         (address + 10, address)
         for address in
         [ip_interface('10.100.0.10/24'), ip_interface('10.200.0.10/24')]]
-    instance.ixia.change_ipv4_address(
-        storage=instance.ixia.storage,
+    session.change_ipv4_address(
+        storage=session.storage,
         addresses=addressing_scheme)
-    instance.ixia.create_traffic_item(
-        hrefs=instance.ixia.storage.ipv4)
+    session.create_traffic_item(
+        hrefs=session.storage.ipv4)
     session.save_and_download_config()
     session.close_rest_session()

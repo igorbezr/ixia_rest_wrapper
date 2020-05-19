@@ -9,10 +9,24 @@ LABEL version="alpha"
 
 # Make directory for project code 
 WORKDIR /usr/src/ixia_rest_wrapper
+RUN mkdir src
+
+# Install required Debian packages (mainly openssl for python)
+RUN apt update \
+    && apt install -y \
+    apt-utils \
+    telnet \
+    python3-openssl
+
+# Copy source code from Developer workstation to image
+COPY src/*.py src/
 
 # Copy requirements and install required pip packages
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy demo script (if needed)
+COPY demo.py .
 
 # Setting up timezone properly (or it will be have UTC time)
 ENV TZ='Europe/Moscow'
@@ -20,5 +34,5 @@ ENV TZ='Europe/Moscow'
 # Setting up stop signal
 STOPSIGNAL SIGTERM
 
-# Set our testing system as entry point
-ENTRYPOINT ["python3"]
+# Setting up python interpreter as an entry point
+ENTRYPOINT ["python"]
