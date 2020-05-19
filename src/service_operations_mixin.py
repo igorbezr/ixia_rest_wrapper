@@ -38,3 +38,31 @@ class ServiceOperationsMixin(IxNetworkSession):
         # Write retrieved config to the file (in bytes)
         with open(ServiceOperationsMixin.IXIA_CONFIG_NAME, 'wb') as file:
             file.write(self.response.content)
+
+    def start_all_protocols(self):
+        '''
+        The method starts all protocols for all topologies in the active
+        IxNetwork scenario
+        '''
+        # Here we just prepare an empty JSON
+        operations_dict_json = json.dumps([{}])
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/operations/startallprotocols']),
+            data=operations_dict_json)
+        self.logger()
+
+    def stop_all_protocols(self):
+        '''
+        The method stops all protocols for all topologies in the active
+        IxNetwork scenario
+        '''
+        # Here we just prepare an empty JSON
+        operations_dict_json = json.dumps([{}])
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/operations/stopallprotocols']),
+            data=operations_dict_json)
+        self.logger()
