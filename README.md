@@ -15,6 +15,10 @@ absolutely no warranty that it at least work :)
 INSTALLATION
 
 1. Ensure that you have git and docker on your workstation.
-2. Cloning this repo with appropriate location
-3. Build Docker image.
-4. Have fun !
+2. Cloning this repo into appropriate location
+    git clone https://github.com/igorbezr/ixia_rest_wrapper
+3. Build Docker image
+    docker build -t ixia_rest_wrapper .
+4. Start demo script and view nice log in stdout 
+    docker run -ti ixia_rest_wrapper demo.py
+5. Have fun !
