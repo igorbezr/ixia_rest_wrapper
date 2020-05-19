@@ -49,7 +49,7 @@ class MainObjectsMixin(IxNetworkSession):
 
     def create_topology(self, storage, existed_vports=None):
         '''
-        This module creates IxNetowrk topology based on previously created ports
+        The method creates IxNetowrk topology based on previously created ports
         '''
         if not existed_vports:
             existed_vports = storage.vports
@@ -78,7 +78,7 @@ class MainObjectsMixin(IxNetworkSession):
             existed_topologies=None,
             multiplier: int=1):
         '''
-        This module creates DeviceGroups based on previously created topologies
+        The method creates DeviceGroups based on previously created topologies
         '''
         if not existed_topologies:
             existed_topologies = storage.topologies

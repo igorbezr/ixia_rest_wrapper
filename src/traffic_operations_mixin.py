@@ -20,7 +20,7 @@ class TrafficOperationsMixin(IxNetworkSession):
                 'rate': 100, 'type': 'percentLineRate', 'fixedSize': 1500},
             flow_groups=['ipv4SourceIp0', 'ipv4DestIp0']):
         '''
-        The module creates traffic item with appropriate settings:
+        The method creates traffic item with appropriate settings:
          * 100% line rate
          * frame size is 1500 bytes
          * bidirectional IPv4 (by default) traffic

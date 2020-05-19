@@ -15,7 +15,7 @@ class ServiceOperationsMixin(IxNetworkSession):
 
     def save_and_download_config(self):
         '''
-        This module saves IxNetowrk configuration to the file
+        The method saves IxNetowrk configuration to the file
         and downloads it from IxNetwork to HFTS.
         '''
         # Save configuration

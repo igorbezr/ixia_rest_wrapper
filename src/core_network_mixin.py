@@ -13,7 +13,7 @@ class CoreNetworkObjectsMixin(IxNetworkSession):
 
     def create_ethernet(self, storage, existed_device_groups=None):
         '''
-        The module creates Ethernet instances for provided DeviceGroups
+        The method creates Ethernet instances for provided DeviceGroups
         '''
         if not existed_device_groups:
             existed_device_groups = storage.device_groups
@@ -38,7 +38,7 @@ class CoreNetworkObjectsMixin(IxNetworkSession):
             storage,
             existed_ethernets=None):
         '''
-        The module is very similar to create_ethernet()
+        The method is very similar to create_ethernet()
         '''
         if not existed_ethernets:
             existed_ethernets = storage.ethernets
@@ -60,7 +60,7 @@ class CoreNetworkObjectsMixin(IxNetworkSession):
 
     def change_ipv4_address(self, storage, addresses: list):
         '''
-        The module gets hrefs for IPv4 address, prefix and gateway from
+        The method gets hrefs for IPv4 address, prefix and gateway from
         IPv4 IxNetwork object and then changes them according to provided
         arguments.
         '''
