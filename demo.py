@@ -30,7 +30,7 @@ if __name__ == '__main__':
             'port': '2',
             'link_id': 'right_side'}}
     # Select chassis and assign ports and save vports (below in analogy)
-    session.assign_ports('10.27.193.3', ports, session.storage)
+    session.assign_ports('192.168.100.1', ports, session.storage)
     session.create_topology(session.storage)
     session.create_device_groups(session.storage)
     session.create_ethernet(session.storage)
@@ -43,12 +43,11 @@ if __name__ == '__main__':
     session.change_ipv4_address(
         storage=session.storage,
         addresses=addressing_scheme)
-    # Create, start&stop traffic stream
+    # Create, start&stop traffic stream and gathering statistics
     session.create_traffic_item(
         hrefs=session.storage.ipv4)
-    session.generate_traffic_item()
-    session.apply_traffic_item()
-    session.start_all_traffic_items()
-    session.stop_all_traffic_items()
+    statistics, _ = session.traffic_item_macros()
+    logging.info(statistics)
+    # Save created config and close session to the IxNetwork
     session.save_and_download_config()
     session.close_rest_session()

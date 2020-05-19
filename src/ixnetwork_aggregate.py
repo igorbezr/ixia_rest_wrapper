@@ -10,7 +10,7 @@ from urllib3.exceptions import SubjectAltNameWarning
 from src.service_operations_mixin import ServiceOperationsMixin
 from src.main_objects_mixin import MainObjectsMixin
 from src.core_network_mixin import CoreNetworkObjectsMixin
-from src.traffic_operations_mixin import TrafficOperationsMixin
+from src.traffic_macroses_mixin import TrafficMacrosesMixin
 # Custom component class for storing IxNetwork Resources
 from src.storage_component import Storage
 
@@ -19,7 +19,7 @@ class IxNetworkRESTAPI(
         ServiceOperationsMixin,
         MainObjectsMixin,
         CoreNetworkObjectsMixin,
-        TrafficOperationsMixin):
+        TrafficMacrosesMixin):
     '''
     It is a concrete realization of IxNetworkSession abstract base class.
 
