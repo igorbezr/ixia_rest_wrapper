@@ -104,3 +104,70 @@ class TrafficOperationsMixin(IxNetworkSession):
                 '/api/v1/sessions/1/ixnetwork/traffic/trafficItem/1/tracking']),
             data=tracking_dict_json)
         self.logger()
+
+    def start_all_traffic_items(self):
+        '''
+        The method starts all traffic items in the active IxNetwork scenario
+        '''
+        # Hardcoded only one session
+        operations_dict_json = json.dumps(
+            {
+                "arg1": "/api/v1/sessions/1/ixnetwork/traffic"
+            })
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/traffic/operations/start']),
+            data=operations_dict_json)
+        self.logger()
+
+    def stop_all_traffic_items(self):
+        '''
+        The method stops all traffic items in the active IxNetwork scenario
+        '''
+        # Hardcoded only one session
+        operations_dict_json = json.dumps(
+            {
+                "arg1": "/api/v1/sessions/1/ixnetwork/traffic"
+            })
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/traffic/operations/stop']),
+            data=operations_dict_json)
+        self.logger()
+
+    def generate_traffic_item(self):
+        '''
+        The method generates traffic items i.e. it triggers update procedure
+        so that traffic item fields gets fresh data from topologies.
+        '''
+        # Hardcoded only one traffic item
+        operations_dict_json = json.dumps(
+            {
+                "arg1": [
+                    "/api/v1/sessions/1/ixnetwork/traffic/trafficItem/1"]
+            })
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/traffic/trafficItem/operations/generate']),
+            data=operations_dict_json)
+        self.logger()
+
+    def apply_traffic_item(self):
+        '''
+        The method applies traffic item settings.
+        After this procedure in can be started.
+        '''
+        # Hardcoded only one traffic item
+        operations_dict_json = json.dumps(
+            {
+                "arg1": "/api/v1/sessions/1/ixnetwork/traffic"
+            })
+        self.response = self.session.post(
+            url=''.join([
+                self.entry_point,
+                '/api/v1/sessions/1/ixnetwork/traffic/operations/apply']),
+            data=operations_dict_json)
+        self.logger()

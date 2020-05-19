@@ -43,7 +43,12 @@ if __name__ == '__main__':
     session.change_ipv4_address(
         storage=session.storage,
         addresses=addressing_scheme)
+    # Create, start&stop traffic stream
     session.create_traffic_item(
         hrefs=session.storage.ipv4)
+    session.generate_traffic_item()
+    session.apply_traffic_item()
+    session.start_all_traffic_items()
+    session.stop_all_traffic_items()
     session.save_and_download_config()
     session.close_rest_session()

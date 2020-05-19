@@ -45,7 +45,7 @@ class ServiceOperationsMixin(IxNetworkSession):
         IxNetwork scenario
         '''
         # Here we just prepare an empty JSON
-        operations_dict_json = json.dumps([{}])
+        operations_dict_json = json.dumps({})
         self.response = self.session.post(
             url=''.join([
                 self.entry_point,
@@ -59,42 +59,10 @@ class ServiceOperationsMixin(IxNetworkSession):
         IxNetwork scenario
         '''
         # Here we just prepare an empty JSON
-        operations_dict_json = json.dumps([{}])
+        operations_dict_json = json.dumps({})
         self.response = self.session.post(
             url=''.join([
                 self.entry_point,
                 '/api/v1/sessions/1/ixnetwork/operations/stopallprotocols']),
-            data=operations_dict_json)
-        self.logger()
-
-    def start_all_traffic_items(self):
-        '''
-        The method starts all traffic items in the active IxNetwork scenario
-        '''
-        # Hardcoded only one session
-        operations_dict_json = json.dumps([
-            {
-                "arg1": "/api/v1/sessions/1/ixnetwork/traffic"
-            }])
-        self.response = self.session.post(
-            url=''.join([
-                self.entry_point,
-                '/api/v1/sessions/1/ixnetwork/operations/start']),
-            data=operations_dict_json)
-        self.logger()
-
-    def stop_all_traffic_items(self):
-        '''
-        The method stops all traffic items in the active IxNetwork scenario
-        '''
-        # Hardcoded only one session
-        operations_dict_json = json.dumps([
-            {
-                "arg1": "/api/v1/sessions/1/ixnetwork/traffic"
-            }])
-        self.response = self.session.post(
-            url=''.join([
-                self.entry_point,
-                '/api/v1/sessions/1/ixnetwork/operations/stop']),
             data=operations_dict_json)
         self.logger()
