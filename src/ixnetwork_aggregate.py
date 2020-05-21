@@ -41,7 +41,7 @@ class IxNetworkRESTAPI(
         self.__rest_port = str(rest_port)
         self.__username = str(user)
         self.__password = str(password)
-        self.__hostname = 'IxNetwork-Self-Host'
+        self.__hostname = 'ixnetwork-self-host'
         self.__entry_point = f'https://{self.hostname}:{self.rest_port}'
         # Essential methods invoking
         self.certificate_preparation()

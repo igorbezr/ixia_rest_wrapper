@@ -1,6 +1,7 @@
-# Our base image is official python 3.7 for Debian 10 (Buster)
+# Our base image is official python 3.7.7 for Alpine 3.11
+# So this image only takes approximately 80 Mb of disk space
 # https://hub.docker.com/_/python/
-FROM python:3.7.7-buster
+FROM python:3.7.7-alpine3.11
 
 # Maintainer information
 LABEL vendor="PET_PROJECT"
@@ -10,13 +11,6 @@ LABEL version="alpha"
 # Make directory for project code 
 WORKDIR /usr/src/ixia_rest_wrapper
 RUN mkdir src
-
-# Install required Debian packages (mainly openssl for python)
-RUN apt update \
-    && apt install -y \
-    apt-utils \
-    telnet \
-    python3-openssl
 
 # Copy source code from Developer workstation to image
 COPY src/*.py src/
